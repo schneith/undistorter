@@ -3,7 +3,10 @@ cmake_minimum_required(VERSION 2.8.3)
 project(undistorter)
 find_package(catkin_simple REQUIRED)
 
+find_package(cmake_modules REQUIRED)
+find_package(catkin_simple REQUIRED)
 catkin_simple()
+
 find_package(Eigen REQUIRED)
 find_package(OpenCV REQUIRED) 
 
