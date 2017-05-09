@@ -3,8 +3,7 @@
 #include <ros/ros.h>
 #include <image_transport/image_transport.h>
 #include <sensor_msgs/image_encodings.h>
-#include <opencv/cv.h>
-#include <opencv/highgui.h>
+#include <opencv2/highgui/highgui.hpp>
 #include <cv_bridge/cv_bridge.h>
 
 #include <undistorter/undistorter.h>
@@ -67,13 +66,11 @@ int main(int argc, char **argv)
   ros::init(argc, argv, "example_undistorter");
 
   ros::NodeHandle nh;
-  cvNamedWindow(WINDOW_NAME.c_str());
-  cvStartWindowThread();
+
   image_transport::ImageTransport it(nh);
   image_transport::Subscriber sub = it.subscribe("/cam0/image_raw", 1, boost::bind(imageCallback, _1, undistorter));
 
   ros::spin();
-  cvDestroyWindow(WINDOW_NAME.c_str());
 
   return 0;
 }
